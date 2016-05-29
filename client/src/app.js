@@ -1,6 +1,6 @@
 var app = angular.module('shippable', ['ngRoute']);
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider,$httpProvider) {
     $routeProvider.
         when("/issue",
             {
@@ -22,28 +22,26 @@ app.config(function ($routeProvider) {
     }
 )
 app.controller('ManageController',['$scope','$http', function ($scope,$http) {
-//    $scope.viewRooms = function(){
-//        $http({
-//                method: 'GET',
-//                url: chimeroom.base_url + '/viewrooms',
-//                data: null
-//        }).then(
-//            function (result) {
-//                $scope.availableRooms = result.data
-//                console.log($scope.availableRooms)
-//
-//            },
-//            function (err) {
-//                console.log(err)
-//            });
-//    }
-//    $scope.viewRooms()
+    $scope.viewResult = false
+    $scope.showResult = function(formGetIssues){
+        $scope.form_object = {};
+        $scope.form_object["url"] = formGetIssues.url.$modelValue;
+        $http({
+            method: 'POST',
+            url: "http://127.0.0.1:8000/viewresult",
+            data: $scope.form_object,
+        }).then(
+            function (result) {
+                $scope.data = result.data
+                $scope.viewResult = true
+            },
+            function (err) {
+                console.log(err)
+            });
+    }
 
 }]);
-app.controller('ResultController',['$scope', '$http', function ($scope, $http) {
 
-
-}]);
 
 app.controller('404Controller', ['$scope', function ($scope) {
 }]);

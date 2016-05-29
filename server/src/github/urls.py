@@ -1,10 +1,10 @@
 from django.conf.urls import include, url
-from django.contrib import admin
+from github.view import ResultView
+from rest_framework import routers
 
+
+router = routers.SimpleRouter()
 urlpatterns = [
-    # Examples:
-    # url(r'^$', 'github.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^viewresult$', ResultView.as_view()),
+    url(r'^', include(router.urls)),
 ]

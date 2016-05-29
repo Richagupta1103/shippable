@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<form name="formGetIssues">
+<input type="text" name="url" ng-model="url" placeholder="URL of GitHub repository" size="40">
+<button ng-click="showResult(formGetIssues)">Submit</button>
+</form>
 
-</body>
-</html>
+<div ng-show = "viewResult"><br/><br/>
+<br/>
+    <div class="Table">
+    <div class="Heading">
+        <div class="Cell">
+            <p>Total open issues</p>
+        </div>
+        <div class="Cell">
+            <p>Opened in the last 24 hours</p>
+        </div>
+        <div class="Cell">
+            <p>Opened b/t 24hr and 7 days</p>
+        </div>
+        <div class="Cell">
+            <p>Opened more than 7 days ago</p>
+        </div>
+    </div>
+    <div class="Row">
+        <div class="Cell">
+            <p>{{data['total_Open_issue']}}</p>
+        </div>
+        <div class="Cell">
+            <p>{{data['total_Open_issue_24']}}</p>
+        </div>
+        <div class="Cell">
+            <p>{{data['total_Open_issue_24_7']}}</p>
+        </div>
+        <div class="Cell">
+            <p>{{data['total_Open_issue_7']}}</p>
+        </div>
+    </div>
+
+</div>
+</div>
