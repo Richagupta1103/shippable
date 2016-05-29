@@ -26,6 +26,8 @@ app.controller('ManageController',['$scope','$http', function ($scope,$http) {
     $scope.showResult = function(formGetIssues){
         $scope.form_object = {};
         $scope.form_object["url"] = formGetIssues.url.$modelValue;
+
+        // calling the api
         $http({
             method: 'POST',
             url: "http://127.0.0.1:8000/viewresult",
